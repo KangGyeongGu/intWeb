@@ -152,7 +152,7 @@ body::-webkit-scrollbar {
   display: flex;
   transition: transform 0.3s ease-in-out; /* 슬라이드 애니메이션 */
   height: 438px;
-  width: calc(438px * 3); /* 이미지 개수만큼 넓이 설정 */
+  width: 438; /* 이미지 개수만큼 넓이 설정 */
 }
 
 .slide-images img {
