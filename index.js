@@ -38,7 +38,7 @@ let prev = function () {
     $slideImgs.style.transform = `translateX(${position}px)`;
     imgIndex = imgIndex - 1;
   }
-  if (imgIndex == 0) {
+  if (imgIndex === 0) {
     $btnPrev.setAttribute("disabled", "true");
   }
 };
@@ -51,7 +51,7 @@ let next = function () {
     $slideImgs.style.transition = "transform .5s ease-out";
     imgIndex = imgIndex + 1;
   }
-  if (imgIndex == 2) {
+  if (imgIndex === 2) {
     $btnNext.setAttribute("disabled", "true");
   }
 };
@@ -99,44 +99,3 @@ window.addEventListener(
   },
   false
 );
-
-//Chat-GPT responser
-document.getElementById('chatgptButton').addEventListener('click', async () => {
-  const chatgptResponse = document.getElementById('chatgptResponse');
-  chatgptResponse.innerHTML = '<p>Loading...</p>';
-  
-  const apiKey = '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'; // OpenAI API 키
-  const prompt = '한국에서 최근 유행하는 트렌트를 한 가지 소개해줘.';
-
-
-  try {
-    const response = await fetch('https://api.openai.com/v1/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model: 'gpt-4o',
-        prompt: prompt,
-        max_tokens: 100,
-        temperature: 0.7,
-      }),
-    });
-
-    if (!response.ok) {
-      throw new Error(`API Error: ${response.status} - ${response.statusText}`);
-    }
-
-    const data = await response.json();
-
-    if (data && data.choices && data.choices.length > 0) {
-      chatgptResponse.innerHTML = `<p>${data.choices[0].text.trim()}</p>`;
-    } else {
-      throw new Error('API returned an empty or unexpected response format.');
-    }
-  } catch (error) {
-    console.error(error);
-    chatgptResponse.innerHTML = `<p>Error: ${error.message}</p>`;
-  }
-});
