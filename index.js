@@ -44,14 +44,14 @@ let prev = function () {
 };
 
 let next = function () {
-  if (imgIndex < 5) {
+  if (imgIndex < 3) {
     $btnPrev.removeAttribute("disabled");
     position -= IMG_WIDTH;
     $slideImgs.style.transform = `translateX(${position}px)`;
     $slideImgs.style.transition = "transform .5s ease-out";
     imgIndex = imgIndex + 1;
   }
-  if (imgIndex == 4) {
+  if (imgIndex == 2) {
     $btnNext.setAttribute("disabled", "true");
   }
 };
