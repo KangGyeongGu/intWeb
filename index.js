@@ -21,7 +21,7 @@ let typing = function () {
   }
 };
 
-setInterval(typing, 200);
+setInterval(typing, 130);
 
 // 이미지 슬라이드
 let imgIndex = 0;
